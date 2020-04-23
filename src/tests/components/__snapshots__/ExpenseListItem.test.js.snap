@@ -2,11 +2,6 @@
 
 exports[`should render expense list item 1`] = `
 <li>
-  <p>
-    195
-     – 
-    0
-  </p>
   <Link
     to="/edit/1"
   >
@@ -14,5 +9,10 @@ exports[`should render expense list item 1`] = `
       Gum
     </h3>
   </Link>
+  <p>
+    $1.95
+    —
+    January 1st, 1970
+  </p>
 </li>
 `;
