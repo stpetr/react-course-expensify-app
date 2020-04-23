@@ -7,7 +7,7 @@ module.exports = (env, argv) => {
     return {
         entry: './src/app.js',
         output: {
-            path: path.join(__dirname, 'public'),
+            path: path.join(__dirname, 'public', 'dist'),
             filename: 'bundle.js'
         },
         mode: 'development',
@@ -42,7 +42,8 @@ module.exports = (env, argv) => {
         },
         plugins: [
             new MiniCssExtractPlugin({
-                filename: 'styles.css'
+                filename: 'styles.css',
+                publicPath: path.join(__dirname, 'public', 'dist'),
             })
         ],
         devtool: isProduction ? 'source-map' : 'inline-source-map',
@@ -50,6 +51,7 @@ module.exports = (env, argv) => {
             contentBase: path.join(__dirname, 'public'),
             port: 3000,
             historyApiFallback: true,
+            publicPath: '/dist/'
         }
     }
 }
