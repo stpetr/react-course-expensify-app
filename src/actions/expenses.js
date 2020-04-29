@@ -28,7 +28,7 @@ export const startAddExpense = (expenseData = {}) => {
                 ...expense
             }))
         }).catch((e) => {
-            console.log()
+            console.log('Error pushing expense:', e)
         })
     }
 }
@@ -45,3 +45,27 @@ export const editExpense = (id, updates) => ({
     id,
     updates
 })
+
+// SET EXPENSES
+export const setExpenses = (expenses) => ({
+    type: 'SET_EXPENSES',
+    expenses
+})
+
+// START_SET_EXPENSES
+export const startSetExpenses = (expenses = []) => {
+    return (dispatch) => {
+        return database.ref('expenses').once('value').then((snapshot) => {
+            const expenses = []
+            snapshot.forEach((expenseSnapshot) => {
+                expenses.push({
+                    id: expenseSnapshot.key,
+                    ...expenseSnapshot.val()
+                })
+            })
+            dispatch(setExpenses(expenses))
+        }).catch((e) => {
+            console.log('Error fetching expenses:', e)
+        })
+    }
+}
