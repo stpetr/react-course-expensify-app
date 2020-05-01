@@ -21,7 +21,7 @@ test('should render error for invalid form data', () => {
     const wrapper = shallow(<ExpenseForm expense={expense} />)
     wrapper.find('form').simulate('submit', { preventDefault: () => {} })
     expect(wrapper.state('error').length).toBeGreaterThan(0)
-    expect(wrapper.find('.expense-form__error').length).toBe(1)
+    expect(wrapper.find('.form__error').length).toBe(1)
     expect(wrapper).toMatchSnapshot()
 })
 

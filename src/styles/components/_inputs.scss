@@ -1,0 +1,21 @@
+.form-control {
+    height: 50px;
+    padding: $s-size;
+    font-size: $font-size-large;
+    font-weight: 300;
+    border: 1px solid #cacccd;
+}
+
+.text-input {
+    @extend .form-control;
+}
+
+.select {
+    @extend .form-control;
+    background-color: transparent;
+}
+
+.textarea {
+    @extend .form-control;
+    height: 10rem;
+}
